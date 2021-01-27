@@ -7,10 +7,10 @@
 % For example data we provide network data as this is tyically what we
 % study and we have a useful similarity funtion available.
 %
-% First load the example data file: network_adjacency_data_3824_nodes.mat
+% First load the example data file: network_adjacency_data_1446_nodes.mat
 % (it is in the folder: examples)
 %
-% The example data is a 3824x3824 adjacency matrix from a social media
+% The example data is a 1446x1446 adjacency matrix from a social media
 % network.
 
 %% compute the similarity matrix
