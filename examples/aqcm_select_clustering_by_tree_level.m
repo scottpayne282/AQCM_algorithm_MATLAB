@@ -4,14 +4,9 @@
 % This script demonstrates how to run AQCM and then select a clustering
 % "manually" as a specific level of the tree.
 % 
-% For example data we provide network data as this is tyically what we
-% study and we have a useful similarity funtion available.
-%
 % First load the example data file: network_adjacency_data_1446_nodes.mat
 % (it is in the folder: examples)
 %
-% The example data is a 1446x1446 adjacency matrix from a social media
-% network.
 
 %% compute the similarity matrix
 [S]=heat_sim_large(G);
@@ -31,5 +26,7 @@ Tlabels = find(levels==2);
 [Comms]=leaves_from_tree_nodes(T,n,Tlabels);
 % Comms is the clustering obtained from T at level 2
 
-
+%% draw diagram of the hierarchy tree and clustering
+[XT,permT]=dendroLayout(T,n,'simple');
+dendroOfXColor(T,Tlabels,n,8,XT);
 

@@ -55,7 +55,7 @@ S=S-minS;
 % effect though it tends to be not more than a few.
 [nestnumber,Comms,Tlabels]=nested_filter(Comms,Tlabels);
 
-%% draw diagrams os the hierarchy tree, clustering, and similarity data
+%% draw diagrams of the hierarchy tree, clustering, and similarity data
 [XT,permT]=dendroLayout(T,n,'simple');
 % XT is a mx2 array where row i are the x and y coords of node i of the
 % tree T, permT is a permutation of the underlying data set that arranges
