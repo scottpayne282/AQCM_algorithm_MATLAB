@@ -66,10 +66,10 @@ Tlabels(locs) = [];
 [Sc]=build_contracted_qcmpPar(Comms,n,S,5e+25,3);
 
 %% Input the contracted graph and clustering into repeated iterative process
-% In the input fields the parameter 2 controls the number of optimal cuts
+% In the input fields the parameter 3 controls the number of optimal cuts
 % we will try at each level (we end up choosing the one that has the most clusters)
 % and the parameter 2 is the number of rounds to iterate.
-% WARNING: choosing the iteration number parameter too can cause an error,
+% WARNING: choosing the iteration number parameter too high can cause an error,
 % for example with the data set demonstrated here (n=1446) an error happens
 % if we ask for 3 or more iterations, but for 2 iterations we get nice
 % output.
