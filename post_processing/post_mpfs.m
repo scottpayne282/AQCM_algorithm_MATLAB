@@ -1,5 +1,13 @@
 function [CommunityCell,Tlabels]=post_mpfs(S,CommunityCell,Tlabels,T,thresh)
 
+% NOTE about the architecture of this code: This implementation is actually
+% a special case of a more general algorithm designed to apply to any
+% points in a data set not just unclustered points. For that reason some of
+% the code lines will seem unecessary for the case where we work on
+% unclustered data only. The code was originally written for the general
+% case with runtime speed in mind, that code was then adapted for the use
+% seen here but we didn't re-work it completely.
+
 
 % convert CommunityCell clustering storage to logical array format
 n=size(S,1);
