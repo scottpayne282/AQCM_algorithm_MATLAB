@@ -33,7 +33,7 @@ tic;
 [F,D,N]=growthstep(S,Es,tol,lam,tee);
 Timer(2,1)=toc;
 tic;
-[F,D,N]=mergestep(F,D,N,S,0.0000000001);
+[F,D,N]=adjuststep(F,D,N,S,0.0000000001);
 Timer(3,1)=toc;
 
 [F,D,N]=addmissedpoints(F,D,N);
@@ -74,7 +74,7 @@ while s>1
     [F,P,D,N]=updatestep(F,P,S);
     Timer(5,level)=toc;
     tic;
-    [F,P,D,N]=mergestepIterPhase(F,P,D,N,S,0.0000000001);
+    [F,P,D,N]=adjuststepIterPhase(F,P,D,N,S,0.0000000001);
     Timer(3,level)=toc;
     %---------------------------------------------------------------------
     snew=size(F,2);
@@ -381,7 +381,7 @@ end
 %----------------------------------------------------------------------------
 P(:,count:end)=[];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [F,D,N]=mergestep(F,D,N,S,tol)
+function [F,D,N]=adjuststep(F,D,N,S,tol)
 %
 % sort the clusters in descending order by their density
 [D,I]=sort(D,'descend');
@@ -421,7 +421,7 @@ while j<s
     
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [F,P,D,N]=mergestepIterPhase(F,P,D,N,S,tol)
+function [F,P,D,N]=adjuststepIterPhase(F,P,D,N,S,tol)
 %
 % the following code segment is necessary to keep "single point" clusters
 % sorted at the "low end" of the list, this prevents an error that occurs

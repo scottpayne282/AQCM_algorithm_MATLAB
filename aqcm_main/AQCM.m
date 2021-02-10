@@ -14,7 +14,7 @@ function [ClustCell,InfoCell,n]=AQCM(S,tol,lam,tee)
 
 [F,D,N]=growthstep(S,Es,tol,lam,tee);
 
-[F,D,N]=mergestep(F,D,N,S,0.0000000001);
+[F,D,N]=adjuststep(F,D,N,S,0.0000000001);
 
 [F,D,N]=addmissedpoints(F,D,N);
 %-------------------------------------------------------------------------
@@ -45,7 +45,7 @@ while s>1
     % the current clustering F by the update function
     [F,P,D,N]=updatestep(F,P,S);
     
-    [F,P,D,N]=mergestepIterPhase(F,P,D,N,S,0.0000000001);
+    [F,P,D,N]=adjuststepIterPhase(F,P,D,N,S,0.0000000001);
     %---------------------------------------------------------------------
     snew=size(F,2);
     if snew<s
@@ -244,7 +244,7 @@ end
 %----------------------------------------------------------------------------
 P(:,count:end)=[];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [F,D,N]=mergestep(F,D,N,S,tol)
+function [F,D,N]=adjuststep(F,D,N,S,tol)
 %
 % sort the clusters in descending order by their density
 [D,I]=sort(D,'descend');
@@ -284,7 +284,7 @@ while j<s
     
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [F,P,D,N]=mergestepIterPhase(F,P,D,N,S,tol)
+function [F,P,D,N]=adjuststepIterPhase(F,P,D,N,S,tol)
 %
 % the following code segment is necessary to keep "single point" clusters
 % sorted at the "low end" of the list, this prevents an error that occurs
