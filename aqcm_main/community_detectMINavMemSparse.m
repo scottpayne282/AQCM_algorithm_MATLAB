@@ -122,6 +122,9 @@ for j=levels:-1:1;
             %
             arcwghts=sonverts./((sonden.^2)-(fatherden^2));
             % here we track indices of some possible special cases
+            if length(arcwghts)==1
+                arcwghts = Inf;
+            end
             parent = currentnode;
             children = prevlev(labels);
             % case of negative
